@@ -5,6 +5,8 @@ const closeModal = document.querySelector(`.bi-x-lg`);
 const submitBtn = document.querySelector(`.submit-btn`);
 const inputTitle = document.getElementById(`title`);
 const inputBody = document.getElementById(`body`);
+const imageURL = document.querySelector(`#image-url`);
+console.log(imageURL);
 const overlay = document.querySelector(`.overlay`);
 const div = document.querySelector(`.latest-post`);
 const latestPost = document.querySelector(`.latestPost`);
@@ -69,18 +71,10 @@ submitBtn.addEventListener(`click`, (e) => {
       console.log(myArray);
       div.innerHTML += `
                 <div class="row post" data-aos="flip-up">
-            <div class="read-img bg col-md-3 d-flex align-items-end">
-                <img src="${pictureArray[defaultItem].img}" alt="" class="img-fluid d-none d-md-block" />
-                <div class="text">
-                    <h3 class="d-md-none fw-semibold">${myArray[defaultItem].title}
-                    </h3>
-                    <p class="d-md-none">
-                        by
-                        <span class="text-info">${writersArray[defaultItem].name} </span> ${dateArray[defaultItem].date}
-                    </p>
-                </div>
+            <div class="read-img col-12 col-md-3 d-flex align-items-end border">
+                <img src="${imageURL.value}" alt="" class="post-image" />
             </div>
-            <div class="read col-9 pe-md-5 d-none d-md-flex flex-column justify-content-center">
+            <div class="read col-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
                 <h3 class="fw-semibold">${myArray[defaultItem].title}</h3>
                 <p>
                     by <span class="text-info pt-4">${writersArray[defaultItem].name} </span> ${dateArray[defaultItem].date}
@@ -97,6 +91,7 @@ submitBtn.addEventListener(`click`, (e) => {
       overlay.classList.remove(`show-modal`);
       inputBody.value = ``;
       inputTitle.value = ``;
+      imageURL.value = ``;
       defaultItem++;
     });
 });
@@ -112,23 +107,15 @@ getPost.addEventListener(`click`, () => {
       for (i = 0; i < 7; i++) {
         div.innerHTML += `
                 <div class="row post" data-aos="flip-up">
-            <div class="read-img img-1 col-md-3 d-flex align-items-end">
-                <img src="${pictureArray[i].img}" alt="" class="img-fluid d-none d-md-block" />
-                <div class="text">
-                    <h3 class="d-md-none fw-semibold">${myArray[i].title}
-                    </h3>
-                    <p class="d-md-none">
-                        by
-                        <span class="text-info">${writersArray[i].name}</span> ${dateArray[i].date}
-                    </p>
-                </div>
+            <div class="read-img col-12 col-md-3 d-flex align-items-end">
+                <img src="${pictureArray[i].img}" alt="" class="img-fluid post-image" />
             </div>
-            <div class="read col-9 pe-md-5 d-none d-md-flex flex-column justify-content-center">
+            <div class="read col-12 col-md-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
                 <h3 class="fw-semibold">${myArray[i].title}</h3>
                 <p>
                     by <span class="text-info pt-4">${writersArray[i].name}</span> ${dateArray[i].date}
                 </p>
-                <div class="options d-flex align-items-center justify-content-between">
+                <div class="options d-flex align-items-center justify-content-between pb-3 pb-md-0">
                   <a href="./post.html" target="_blank">
                     <button class="btn btn-info text-light">Read More</button>
                   </a>
