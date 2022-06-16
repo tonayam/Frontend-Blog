@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: "Kdam Thmor Pro", sans-serif;
+  font-weight: lighter;
+}
+
+.bi {
+  cursor: pointer;
+}
+
+/* NAVBAR STLYES */
+.nav-items li,
+.info li {
+  margin: 0 3rem;
+}
+nav button {
+  background: #00b5d8;
+  border: none;
+  border-radius: 5px;
+  width: 145px;
+  height: 40px;
+}
+
+.default {
+  z-index: 2;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(73, 166, 233, 0.5);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden;
+  z-index: -10;
+}
+.show-modal {
+  visibility: visible;
+  z-index: 10;
+}
+.modal-container {
+  background: white;
+  height: 60vh;
+  min-width: 40%;
+  position: relative;
+}
+input {
+  width: 350px;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.bi-x-lg:hover {
+  transform: scale(1.2);
+  transition: 0.5s all linear;
+  cursor: pointer;
+}
+.post {
+  margin: 0.5rem 0;
+}
+.post-image {
+  width: 100%;
+  height: 40vh;
+}
+.post-image img {
+  width: 100%;
+}
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  z-index: 999;
+}
+.hide-preloader {
+  z-index: -999;
+  visibility: hidden;
+}
+
+footer .list-items li {
+  margin: 2rem 0;
+}
+footer input {
+  width: 250px;
+}
+footer button {
+  background: #00b5d8;
+  color: white;
+  border: none;
+  width: 152px;
+  height: 46px;
+}
+.bordered {
+  border-top: 1px solid grey;
+}
+
+@media screen and (max-width: 767px) {
+  .mob-nav-items {
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s all ease-in-out;
+  }
+  .show-nav {
+    height: 500px;
+  }
+  .mob-nav-items li {
+    margin: 4rem 0;
+  }
+  .bi-x-lg {
+    display: none;
+  }
+  .show-x {
+    display: block;
+  }
+}

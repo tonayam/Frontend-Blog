@@ -1,0 +1,8 @@
+.bi-arrow-left {
+  color: black;
+}
+
+.bi-arrow-left:hover {
+  color: rgb(28, 117, 224);
+  transition: 0.5s all linear;
+}
