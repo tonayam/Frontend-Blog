@@ -126,7 +126,7 @@ footer button {
   .mob-nav-items li {
     margin: 4rem 0;
   }
-  .bi-x-lg {
+  .close-navbar {
     display: none;
   }
   .show-x {

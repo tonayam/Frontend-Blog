@@ -1,7 +1,7 @@
 // DECLARING VARIBABLE
 const createPost = document.querySelector(`.createPost`);
 const getPost = document.querySelector(`.getPost`);
-const closeModal = document.querySelector(`.bi-x-lg`);
+const closeModal = document.querySelector(`.close`);
 const submitBtn = document.querySelector(`.submit-btn`);
 const inputTitle = document.getElementById(`title`);
 const inputBody = document.getElementById(`body`);
