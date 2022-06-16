@@ -80,7 +80,7 @@ submitBtn.addEventListener(`click`, (e) => {
                 <img src="${imageURL.value}" alt="" class="post-image" />
             </div>
             <div class="read col-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
-                <h3 class="fw-semibold">${myArray[defaultItem].title}</h3>
+                <h3 class="fw-semibold">${inputTitle.value}</h3>
                 <p>
                   by <span class="text-info pt-4">${writersArray[defaultItem].name} </span> ${dateArray[defaultItem].date}
                 </p>
@@ -109,10 +109,7 @@ console.log(div.childElementCount);
 div.addEventListener(`click`, (e) => {
   let deleteButtonIsPressed = e.target.id == `delete-post`;
   let editButtonIsPressed = e.target.id == `edit-post`;
-  console.log(deleteButtonIsPressed);
-
   let id = e.target.parentElement.parentElement.parentElement.dataset.id;
-  console.log(id);
 
   if (deleteButtonIsPressed) {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
