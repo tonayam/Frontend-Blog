@@ -72,11 +72,9 @@ form.addEventListener(`submit`, (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       myArray.push(data);
-      console.log(myArray);
       div.innerHTML += `
-        <div class="row my-4 post" data-aos="fade-down" data-id="${myArray[defaultItem].id}">
+        <div class="row my-4 post" data-aos="zoom-out" data-id="${myArray[defaultItem].id}">
             <div class="read-img col-9 col-md-3 d-flex align-items-end">
                 <img src="${imageURL.value}" alt="" class="post-image" />
             </div>
@@ -114,7 +112,7 @@ getPost.addEventListener(`click`, () => {
       myArray = json;
       for (i = 0; i < 7; i++) {
         div.innerHTML += `
-                <div class="row my-3 post" data-aos="fade-down" data-id ="${myArray[i].id}">
+                <div class="row my-3 post" data-aos="zoom-out" data-id ="${myArray[i].id}">
             <div class="read-img col-9 col-md-3 d-flex align-items-end">
                 <img src="${pictureArray[i].img}" alt="" class="img-fluid post-image" />
             </div>
@@ -163,11 +161,15 @@ div.addEventListener(`click`, (e) => {
       e.target.parentElement.parentElement.parentElement.firstChild
         .nextElementSibling;
     inputTitle.value = titleContent.textContent;
+
     let imageLink =
       e.target.parentElement.parentElement.parentElement.parentElement
         .firstChild.nextElementSibling.firstChild.nextElementSibling;
     imageURL.value = imageLink.src;
-    console.log(imageLink);
+
+    let editId =
+      e.target.parentElement.parentElement.parentElement.parentElement.dataset
+        .id;
 
     submitBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
@@ -190,6 +192,4 @@ div.addEventListener(`click`, (e) => {
         });
     });
   }
-  let editId =
-    e.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
 });
