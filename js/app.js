@@ -3,8 +3,8 @@ const createPost = document.querySelector(`.createPost`);
 const getPost = document.querySelector(`.getPost`);
 const closeModal = document.querySelector(`.close`);
 const submitBtn = document.querySelector(`.submit-btn`);
-const inputTitle = document.getElementById(`title`);
-const inputBody = document.getElementById(`body`);
+let inputTitle = document.getElementById(`title`);
+let inputBody = document.getElementById(`body`);
 const imageURL = document.querySelector(`#image-url`);
 const overlay = document.querySelector(`.overlay`);
 const div = document.querySelector(`.latest-post`);
@@ -52,10 +52,11 @@ createPost.addEventListener(`click`, () => {
 // CLOSE MODAL
 closeModal.addEventListener(`click`, () => {
   overlay.classList.remove(`show-modal`);
+  form.reset();
 });
 
 // CREATE (POST) NEW BLOG POST
-submitBtn.addEventListener(`click`, (e) => {
+form.addEventListener(`submit`, (e) => {
   latestPost.style.display = `block`;
   e.preventDefault();
   fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -79,15 +80,15 @@ submitBtn.addEventListener(`click`, (e) => {
             <div class="read-img col-12 col-md-3 d-flex align-items-end">
                 <img src="${imageURL.value}" alt="" class="post-image" />
             </div>
-            <div class="read col-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
-                <h3 class="fw-semibold">${inputTitle.value}</h3>
+            <div class="read col-12 col-md-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
+                <h3 class="fw-semibold title">${inputTitle.value}</h3>
                 <p>
                   by <span class="text-info pt-4">${writersArray[defaultItem].name} </span> ${dateArray[defaultItem].date}
                 </p>
                 <div class="options d-flex align-items-center justify-content-between">
-                  <div class="d-flex align-items-center">
+                  <div class="edit-read d-flex align-items-center justify-content-between ">
                     <i class="edit bi bi-pencil-square mx-3 fs-3 text-info" id="edit-post"></i>
-                    <a href="./post.html" target="_blank">
+                    <a href="./post.html" target="_blank" class="me-3">
                       <button class="btn btn-info text-light">Read More</button>
                     </a>
                   </div>
@@ -101,27 +102,6 @@ submitBtn.addEventListener(`click`, (e) => {
       form.reset();
       defaultItem++;
     });
-});
-
-console.log(div.childElementCount);
-
-// DELETE AND EDIT
-div.addEventListener(`click`, (e) => {
-  let deleteButtonIsPressed = e.target.id == `delete-post`;
-  let editButtonIsPressed = e.target.id == `edit-post`;
-  let id = e.target.parentElement.parentElement.parentElement.dataset.id;
-
-  if (deleteButtonIsPressed) {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        let target =
-          e.target.parentElement.parentElement.parentElement.remove();
-      });
-  }
 });
 
 // GET POST FROM JSONPLACEHOLDER
@@ -139,14 +119,17 @@ getPost.addEventListener(`click`, () => {
                 <img src="${pictureArray[i].img}" alt="" class="img-fluid post-image" />
             </div>
             <div class="read col-12 col-md-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
-                <h3 class="fw-semibold">${myArray[i].title}</h3>
+                <h3 class="fw-semibold" data-id=${myArray[i].id} >${myArray[i].title}</h3>
                 <p>
                     by <span class="text-info pt-4">${writersArray[i].name}</span> ${dateArray[i].date}
                 </p>
                 <div class="options d-flex align-items-center justify-content-between pb-3 pb-md-0">
-                  <a href="./post.html" target="_blank">
-                    <button class="btn btn-info text-light">Read More</button>
-                  </a>
+                  <div class="edit-read d-flex align-items-center justify-content-between">
+                    <i class="edit bi bi-pencil-square mx-3 fs-3 text-info" id="edit-post"></i>
+                    <a href="./post.html" target="_blank" class="me-3">
+                      <button class="btn btn-info text-light">Read More</button>
+                    </a>
+                  </div>
                   <i class="bi bi-trash3-fill fs-2 text-danger ms-5" id="delete-post"></i>
                 </div>
             </div>
@@ -154,4 +137,59 @@ getPost.addEventListener(`click`, () => {
         `;
       }
     });
+});
+
+// DELETE AND EDIT
+div.addEventListener(`click`, (e) => {
+  let deleteButtonIsPressed = e.target.id == `delete-post`;
+  let editButtonIsPressed = e.target.id == `edit-post`;
+  let id = e.target.parentElement.parentElement.parentElement.dataset.id;
+
+  if (deleteButtonIsPressed) {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        myArray = data;
+        let target =
+          e.target.parentElement.parentElement.parentElement.remove();
+      });
+  }
+
+  if (editButtonIsPressed) {
+    overlay.classList.add(`show-modal`);
+    let titleContent =
+      e.target.parentElement.parentElement.parentElement.firstChild
+        .nextElementSibling;
+    inputTitle.value = titleContent.textContent;
+    let imageLink =
+      e.target.parentElement.parentElement.parentElement.parentElement
+        .firstChild.nextElementSibling.firstChild.nextElementSibling;
+    imageURL.value = imageLink.src;
+    console.log(imageLink);
+
+    submitBtn.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      fetch(`https://jsonplaceholder.typicode.com/posts/${editId}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          title: inputTitle.value,
+          body: inputBody.value,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          titleContent.innerHTML = inputTitle.value;
+          imageLink.src = imageURL.value;
+          overlay.classList.remove(`show-modal`);
+        });
+    });
+  }
+  let editId =
+    e.target.parentElement.parentElement.parentElement.parentElement.dataset.id;
 });

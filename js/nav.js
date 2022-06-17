@@ -2,7 +2,6 @@ const toggleMenu = document.querySelector(`.toggleBar`);
 const closeMenu = document.querySelector(`.close-navbar`);
 const menuItems = document.querySelector(`.mob-nav-items`);
 const container = document.querySelector(`.nav-cont`);
-console.log(container);
 
 toggleMenu.addEventListener(`click`, function () {
   menuItems.classList.add(`show-nav`);

@@ -132,4 +132,7 @@ footer button {
   .show-x {
     display: block;
   }
+  .edit-read {
+    width: 70%;
+  }
 }
