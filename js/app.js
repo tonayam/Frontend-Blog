@@ -112,7 +112,7 @@ getPost.addEventListener(`click`, () => {
       myArray = json;
       for (i = 0; i < 7; i++) {
         div.innerHTML += `
-                <div class="row my-3 post" data-aos="zoom-out" data-id ="${myArray[i].id}">
+                <div class="row my-5 post" data-aos="zoom-out" data-id ="${myArray[i].id}">
             <div class="read-img col-9 col-md-3 d-flex align-items-end">
                 <img src="${pictureArray[i].img}" alt="" class="img-fluid post-image" />
             </div>
