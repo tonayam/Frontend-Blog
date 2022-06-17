@@ -74,10 +74,10 @@ form.addEventListener(`submit`, (e) => {
     .then((data) => {
       console.log(data);
       myArray.push(data);
-      // console.log(myArray);
+      console.log(myArray);
       div.innerHTML += `
-        <div class="row my-3 post" data-aos="flip-up" data-id="${myArray[defaultItem].id}">
-            <div class="read-img col-12 col-md-3 d-flex align-items-end">
+        <div class="row my-4 post" data-aos="fade-down" data-id="${myArray[defaultItem].id}">
+            <div class="read-img col-9 col-md-3 d-flex align-items-end">
                 <img src="${imageURL.value}" alt="" class="post-image" />
             </div>
             <div class="read col-12 col-md-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">
@@ -89,7 +89,7 @@ form.addEventListener(`submit`, (e) => {
                   <div class="edit-read d-flex align-items-center justify-content-between ">
                     <i class="edit bi bi-pencil-square mx-3 fs-3 text-info" id="edit-post"></i>
                     <a href="./post.html" target="_blank" class="me-3">
-                      <button class="btn btn-info text-light">Read More</button>
+                      <button class="btn btn-info">Read More</button>
                     </a>
                   </div>
                   <i class="del bi bi-trash3-fill fs-2 text-danger ms-5" id="delete-post"></i>
@@ -114,8 +114,8 @@ getPost.addEventListener(`click`, () => {
       myArray = json;
       for (i = 0; i < 7; i++) {
         div.innerHTML += `
-                <div class="row my-3 post" data-aos="flip-up" data-id ="${myArray[i].id}">
-            <div class="read-img col-12 col-md-3 d-flex align-items-end">
+                <div class="row my-3 post" data-aos="fade-down" data-id ="${myArray[i].id}">
+            <div class="read-img col-9 col-md-3 d-flex align-items-end">
                 <img src="${pictureArray[i].img}" alt="" class="img-fluid post-image" />
             </div>
             <div class="read col-12 col-md-9 pe-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center">

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
 
 * {
   padding: 0;
@@ -9,19 +9,38 @@ a {
   text-decoration: none;
 }
 body {
-  font-family: "Kdam Thmor Pro", sans-serif;
-  font-weight: lighter;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: black;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
 .bi {
   cursor: pointer;
 }
-
-/* NAVBAR STLYES */
-.nav-items li,
-.info li {
-  margin: 0 3rem;
+.btn,
+nav button,
+footer button {
+  color: white;
+  font-weight: 500;
 }
+#logo {
+  color: black;
+}
+.logo i {
+  color: #00b5d8;
+}
+.nav-items li {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
 nav button {
   background: #00b5d8;
   border: none;
@@ -32,6 +51,7 @@ nav button {
 
 .default {
   z-index: 2;
+  overflow: hidden;
 }
 .overlay {
   position: fixed;
@@ -74,7 +94,7 @@ input {
 }
 .post-image {
   width: 100%;
-  height: 40vh;
+  height: 30vh;
 }
 .post-image img {
   width: 100%;
@@ -97,6 +117,10 @@ input {
   visibility: hidden;
 }
 
+footer,
+section {
+  overflow: hidden;
+}
 footer .list-items li {
   margin: 2rem 0;
 }
@@ -114,25 +138,37 @@ footer button {
   border-top: 1px solid grey;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 876px) {
   .mob-nav-items {
     height: 0;
     overflow: hidden;
     transition: 0.5s all ease-in-out;
   }
+  .mob-nav-items li {
+    margin: 3rem 0;
+  }
+
   .show-nav {
     height: 500px;
   }
-  .mob-nav-items li {
-    margin: 4rem 0;
-  }
   .close-navbar {
     display: none;
+    color: red;
   }
   .show-x {
     display: block;
   }
   .edit-read {
     width: 70%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .post-image {
+    height: 20vh;
+  }
+  .nav-items li {
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
   }
 }
