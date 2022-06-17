@@ -33,13 +33,15 @@
                 </div>
                 <div class="col-md-8 col-lg-9 d-flex justify-content-end align-items-center px-0">
                     <ul class="d-flex nav-items list-unstyled align-items-center">
-                        <li class="text-primary">HOME</li>
+                        <a href="./index.html" class="nav-a">
+                            <li>HOME</li>
+                        </a>
                         <li class="">ABOUT US</li>
-                        <a href="./post.html" target="_blank" class="">
+                        <a href="./post.html" target="_blank" class="nav-a">
                             <li>BLOG</li>
                         </a>
                         <li>CONTACT US</li>
-                        <a href="#subscribe" class="">
+                        <a href="#subscribe" class="nav-a">
                             <li class="me-md-0">
                                 <button class="me-md-0">
                                     Subscribe <i class="bi bi-chevron-compact-right"></i>
@@ -61,7 +63,10 @@
                 </div>
             </div>
             <ul class="mob-nav-items  list-unstyled d-md-none px-3">
-                <li class="text-primary">HOME</li>
+                <a href="./index.html" id="home-link">
+                    <li>HOME</li>
+
+                </a>
                 <li>ABOUT US</li>
                 <a href="./post.html" target="_blank" class="my-5">
                     <li>BLOG</li>
@@ -233,6 +238,7 @@
             delay: 0,
             duration: 1500,
             easing: "ease",
+            once: true,
         });
     </script>
 </body>

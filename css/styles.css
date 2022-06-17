@@ -41,7 +41,9 @@ footer button {
   margin: 0 1rem;
   cursor: pointer;
 }
-
+.nav-a {
+  color: #00b5d8;
+}
 nav button {
   background: #00b5d8;
   border: none;
@@ -156,7 +158,12 @@ footer button {
     margin: 3rem 0;
     color: #121212;
   }
-
+  .nav-a {
+    color: #00b5d8;
+  }
+  #home-link {
+    color: black;
+  }
   .show-nav {
     height: 500px;
   }
