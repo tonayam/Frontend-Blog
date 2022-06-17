@@ -148,6 +148,7 @@ footer button {
 @media screen and (max-width: 876px) {
   #nav-logo {
     color: white;
+    font-size: 1.7rem;
   }
   .mob-nav-items {
     height: 0;
@@ -186,5 +187,11 @@ footer button {
   .nav-items li {
     margin: 0 0.5rem;
     font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #nav-logo {
+    font-size: 1.4rem;
   }
 }
